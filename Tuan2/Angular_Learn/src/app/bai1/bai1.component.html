@@ -1,0 +1,62 @@
+<div style="margin-top: 100px" class="container">
+  <table width="100%" class="table-striped table-bordered text-center">
+    <thead>
+      <tr>
+        <th style="text-align: center" width="10%">ID</th>
+        <th style="text-align: center" width="30%">Name</th>
+        <th style="text-align: center" width="30%">Color</th>
+        <th style="text-align: center" width="30%">Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let color of colorArray; let i = index">
+        <th style="text-align: center">{{ i + 1 }}</th>
+        <td *ngIf="color.check; else inputName">
+          {{ color.name }}
+        </td>
+        <ng-template #inputName>
+          <td>
+            <input style="height: 28px" type="text" [(ngModel)]="updateName" />
+          </td>
+        </ng-template>
+        <td *ngIf="color.check; else OptionBtn" [ngSwitch]="color.color">
+          <p *ngSwitchCase="0" [ngStyle]="{ color: 'green' }">Xanh</p>
+          <p *ngSwitchCase="1" [ngStyle]="{ color: 'red' }">Đỏ</p>
+          <p *ngSwitchCase="2" [ngStyle]="{ color: 'purple' }">Tím</p>
+          <p *ngSwitchCase="3" [ngStyle]="{ color: 'orange' }">Vàng</p>
+        </td>
+        <ng-template #OptionBtn>
+          <td>
+            <select
+              style="width: 120px; height: 28px"
+              class="form-select"
+              [(ngModel)]="updateColor"
+            >
+              <option value="0">Xanh</option>
+              <option value="1">Đỏ</option>
+              <option value="2">Tím</option>
+              <option value="3">Vàng</option>
+            </select>
+          </td>
+        </ng-template>
+        <td>
+          <button
+            class="btn btn-outline-success"
+            *ngIf="color.check; else showButtonSave"
+            (click)="edit(color)"
+          >
+            Edit
+          </button>
+          <ng-template #showButtonSave>
+            <button class="btn btn-outline-warning" (click)="save(color)">
+              Save
+            </button>
+          </ng-template>
+          <button class="btn btn-outline-danger" (click)="delete(color)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

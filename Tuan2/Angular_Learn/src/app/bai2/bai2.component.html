@@ -1,0 +1,24 @@
+<br /><br />
+<div class="container">
+  <label for="name">Nhập tên: </label>&ensp;
+  <input
+    style="padding: 7px"
+    type="text"
+    id="name"
+    [(ngModel)]="currentValue"
+  />
+  <button
+    style="width: 80px; height: 42px; margin-top: -2px"
+    class="btn btn-outline-primary"
+    (click)="turnOn()"
+  >
+    Toggle
+  </button>
+</div>
+<br />
+<app-child-component
+  *ngIf="isTurnOn"
+  [value]="currentValue"
+  [order]="order"
+  (out)="getOrderFromChild($event)"
+></app-child-component>
