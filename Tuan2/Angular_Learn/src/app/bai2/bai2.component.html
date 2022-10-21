@@ -1,24 +1,25 @@
 <br /><br />
 <div class="container">
-  <label for="name">Nhập tên: </label>&ensp;
+  <label for="name">Nhập tên </label>
   <input
     style="padding: 7px"
     type="text"
     id="name"
     [(ngModel)]="currentValue"
   />
+
   <button
-    style="width: 80px; height: 42px; margin-top: -2px"
+    style="width: 80px; height: 42px; margin-top: -2px; margin-left: 20px"
     class="btn btn-outline-primary"
     (click)="turnOn()"
   >
-    Toggle
+    Hidden
   </button>
 </div>
 <br />
 <app-child-component
   *ngIf="isTurnOn"
   [value]="currentValue"
-  [order]="order"
+  [order]="check"
   (out)="getOrderFromChild($event)"
 ></app-child-component>

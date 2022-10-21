@@ -6,48 +6,51 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
   styleUrls: ['./bai2.component.css'],
 })
 export class Bai2Component implements OnInit, OnChanges {
-  order: number = 0;
+  getOrderFromChild(_$event: number) {
+    throw new Error('Method not implemented.');
+  }
+  check: number = 0;
   currentValue: string = '';
   isTurnOn: boolean = true;
   constructor() {}
 
   ngOnChanges(_changes: SimpleChanges): void {
-    this.order++;
+    this.check++;
   }
 
   ngOnInit(): void {
-    this.order++;
+    this.check++;
   }
 
   ngDoCheck(): void {
-    this.order++;
+    this.check++;
   }
 
   ngAfterContentInit(): void {
-    this.order++;
+    this.check++;
   }
 
   ngAfterContentChecked(): void {
-    this.order++;
+    this.check++;
   }
 
   ngAfterViewInit(): void {
-    this.order++;
+    this.check++;
   }
 
   ngAfterViewChecked(): void {
-    this.order++;
+    this.check++;
   }
 
   ngOnDestroy(): void {
-    this.order++;
+    this.check++;
   }
 
   turnOn() {
     this.isTurnOn = !this.isTurnOn;
   }
 
-  getOrderFromChild(order: number) {
-    this.order = order;
+  getcheckFromChild(check: number) {
+    this.check = check;
   }
 }

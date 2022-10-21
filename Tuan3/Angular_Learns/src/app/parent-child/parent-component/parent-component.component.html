@@ -1,0 +1,42 @@
+<br /><br />
+<h1 style="margin-left: 17em; color: orange">Bảng màu</h1>
+<div class="row">
+  <table
+    width="70%"
+    style="margin-left: 234px"
+    class="table-striped table-bordered text-center"
+  >
+    <thead>
+      <tr>
+        <th style="text-align: center" width="10%">ID</th>
+        <th style="text-align: center" width="30%">Name</th>
+        <th style="text-align: center" width="30%">Color</th>
+        <th style="text-align: center" width="30%">Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of itemColorAfter">
+        <td>{{ i.id }}</td>
+        <td>{{ i.color }}</td>
+        <td>{{ i.name }}</td>
+        <td>
+          <button class="btn btn-outline-danger" (click)="deleteItemColor(i)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br /><br />
+<div class="container">
+  <div class="row">
+    <app-child-component
+      *ngFor="let item of itemColor"
+      [ob]="item"
+      class="col-3"
+      (out)="dataChild($event)"
+    >
+    </app-child-component>
+  </div>
+</div>
